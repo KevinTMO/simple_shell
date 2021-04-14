@@ -1,0 +1,91 @@
+.TH SIMPLE_SHELL(1) "2021-04-14" GNU
+
+.Sh NAME
+.B simple_shell
+- Command line interpreter to perform certain tasks
+
+.SH SYPNOSIS
+ #include "shell.h"
+
+
+ int main(void)
+
+.SH FORMAT
+ At prompt user enters ~$ "command" [option]
+
+.SH DESCRIPTION
+.B simple_shell
+
+User input a detailed command at prompt, shell will perform task and return to stdout (terminal) result of given command. A few examples of what simple_shell commands can execute below:
+
+.RS
+.nf
+- Change directory (cd)
+- print text to terminal (echo)
+- print path to working directory (pwd)
+- call to specific enviromental variable ($PATH, $HOME...)
+- list files/directories at working directory (ls)
+.RE
+
+.SH OPTIONS
+.IP "cd [..]"
+Shell will jump to parent directory.
+
+.IP "ls [-la]"
+Will show current files/directory in working directory in long format as well as any hidden files.
+
+.SH FILES
+.TP
+.I
+/simple_shell/shellFun.c
+
+.TP
+.I
+/simple_shell/shell.h
+
+.TP
+.I
+/simple_shell/shellSource.c
+
+.TP
+.I
+/simple_shell/auxfunc.c
+
+.TP
+.I
+/simple_shell/moreauxfun.c
+
+.TP
+.I
+/simple_shell/_printf.c
+
+
+.SH EXAMPLES
+.TP
+ /simple_shell~$ echo $PATH
+usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games 
+.TP
+.PP
+Returns to terminal set of directories where executables programs are located.
+
+.SH RETURN VALUE
+.TP
+.B
+0
+Success, prints to terminal output of given command.
+
+.TP
+.B
+1
+Prints to terminal: "Error: Directory not found or doesn't exist"
+
+.TP
+.B
+1
+Prints to terminal: "Error: the child process couldn't be created"
+
+.SH BUGS
+No redirections or boolean symbols recognized by shell. No aliases known.
+
+.SH AUTHORS
+Kevin Ramos Lozano && Gabriel Martinez
