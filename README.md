@@ -4,9 +4,9 @@
 
 This is an introduction project given by [Holberton School](https://www.holbertonschool.com) for us to understand how a shell works. In this project we are creating a simple shell using a limited amount of functions. Among the concepts that we should learn and understand about this project are:
 
-           - Environment Variables
-           - System calls functions (fork, exec, exit, wait, ...)
-           - Creating PID for commands
+- Environment Variables
+- System calls functions (fork, exec, exit, wait, ...)
+- Creating PID for commands
 
 ### Usage of this program:
 
