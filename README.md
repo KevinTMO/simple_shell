@@ -38,11 +38,11 @@ This is telling you to start writing your commands! So, write something. Like, n
   /home/vagrant/cmd_testing$
 ```
 
-Everything looking fine, for now. Hope nothing get into a hell of a Null or something worse but yeah, you can start playing with out simple shell program and see how many bu... **_cough_** - - things it got.
+Everything looking fine. Let start playing a little bit with our shell!
 
 ### Commands and examples
 
-So, our shell can run almost everything. Not, EVERTHING, but kind of. This is because we made a way to access some build-ins commands from the terminal (the real one with steroids) and use them in our shell. Still, we worked on some of ours and this is the list of them:
+So, our shell can run almost everything. Not, EVERTHING, but kind of. This is because we made a way to access some build-ins commands from the terminal (the real one with steroids) and usethem in our shell. Still, we worked on some of ours and this is the list of them:
 
 - cd - this command will change from on directories to another like this:
 
@@ -60,7 +60,7 @@ So, our shell can run almost everything. Not, EVERTHING, but kind of. This is be
   /home/vagrant/cmd_testing$
 ```
 **Note**: this can use global variables like $PATH, $HOME, $SHELL so use them and play with them. If it can't find it, is because we didn't add it. Sorry. We tried at least. <3
-- dir - 
+
 - environ - this is a lovely command that will showyou the global variables that we got stored in the terminal. Use it so you can get to know each other, they are yours after all. Oh, I almost forgot. This is how you use it:
 
 ```
@@ -74,12 +74,11 @@ So, our shell can run almost everything. Not, EVERTHING, but kind of. This is be
 
 This is the last variable (it didn't want to show up without messing things). Markdowns kind of problems. Anyway, this is how it looks:
 
-` PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games
-`
+` PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games `
 
 ### Using built-ins commands
 
-So, like we said, we got a code running to use external commands like **ls** and arguments like **-l**. You can even use **rm** if you want. To use them is straight forward so I will just use one like **ls** with and argument... let's say, Hmm, **-la?** Yeah, let's GO!
+So, like we said, we got a code running to use external commands like **ls** and arguments like **-l**. You can even use **rm** if you want. To use them is straight forward so I will just use one like **ls** with and the arguments **-la?**.
 
 **Note**: If you don't know about **rm** I will just say you can remove things with that. Get more info [here](https://www.computerhope.com/unix/urm.htm).
 
@@ -114,7 +113,7 @@ To use exit to, well, exit we need to just type "exit" and that's it:
 
 ```
   /home/username$ exit
-  /home/regular-terminal$ 
+  /home/regular-terminal$
 ```
 **Note**: Just for fun we added a string like "shutting down..." after you exit.
 
@@ -122,7 +121,7 @@ Now to use ctrl+D is kind of complicated. Yeah, you need to use two fingers to t
 
 ```
   /home/username$ --invisible ctrl+D input thing... just assume it exist.--
-  /home/regular-terminal$ 
+  /home/regular-terminal$
 ```
 
 So this is it. It has been an amazing adventure and we got good memories together but this is my GOODBYE. Thanks for using our shell. And finding those little things running around. Until the next time, BYE!
