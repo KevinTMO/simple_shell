@@ -14,8 +14,8 @@
 
 /* DEFINING MACROS BELOW */
 
-#define MAX_LEN_CMD 105
-#define MAX_ARGS 13
+#define MAX_LEN_CMD 1024
+#define MAX_ARGS 64
 
 /* DECLARING GLOBAL VARIABLE EXTENSION */
 
@@ -52,5 +52,6 @@ char *_memset(char *s, char b, unsigned int n);
 void _execd(char *args[], char *PWD);
 void _exeEcho(char *args[], char *PWD, char *HOME, char *SHELL, char *PATH);
 void _exeEnv(char *cmd, char *HOME, char *PWD, char *SHELL, char *PATH);
+void _getline(void);
 
 #endif /* SHELL_H */
