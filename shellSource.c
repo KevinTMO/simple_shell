@@ -16,8 +16,7 @@ int main(void)
 
 	do { /*REPL*/
 		_printf(" %s$ ", PWD), __fpurge(stdin);
-		/* scanf("%[^\n]s", cmd); */
-		_getline();
+		scanf("%[^\n]s", cmd);
 
 		if (cmd[0] == '\0' || _strcmp(cmd, "\n") == 0)
 		{
