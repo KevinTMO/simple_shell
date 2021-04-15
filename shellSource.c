@@ -15,8 +15,9 @@ int main(void)
 	_strcpy(PATH, _getenv("PATH")), _strcpy(HOME, PWD), _strcpy(SHELL, PWD);
 
 	do { /*REPL*/
-		_printf(" %s$ ", PWD), __fpurge(stdin),	_memset(cmd, '\0', MAX_LEN_CMD);
-		scanf("%[^\n]s", cmd);
+		_printf(" %s$ ", PWD), __fpurge(stdin);
+		/* scanf("%[^\n]s", cmd); */
+		_getline();
 
 		if (cmd[0] == '\0' || _strcmp(cmd, "\n") == 0)
 		{
