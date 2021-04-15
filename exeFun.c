@@ -57,3 +57,19 @@ void _exeEnv(char *cmd, char *HOME, char *PWD, char *SHELL, char *PATH)
 		_printf(" SHELL=%s\n  PATH=%s\n", SHELL, PATH);
 	}
 }
+/**
+ *_getline - this will get the buffer of the stdin
+ *Return: will return nothing (void)
+ */
+void _getline(void)
+{
+        char *buffer;
+        size_t bufferSize = MAX_LEN_CMD;
+
+        *buffer = getline(&buffer, &bufferSize, stdin);
+
+        if (buffer == NULL)
+        {
+                return;
+        }
+}
