@@ -21,24 +21,6 @@ void _execd(char *args[], char *PWD)
 }
 
 /**
- *_exeEcho - will execute the echo command function
- *@args: is the pointer to strings of arguments
- *@PWD: one of the global variables
- *@HOME: one of the global variables
- *@SHELL: one of the global variables
- *@PATH: one of the global variables
- *Return: will return nothing (void)
- */
-
-void _exeEcho(char *args[], char *PWD, char *HOME, char *SHELL, char *PATH)
-{
-	if (args[1])
-	{
-		__echo(args, PWD, HOME, SHELL, PATH);
-	}
-}
-
-/**
  *_exeEnv - will execute the statements for the environment
  *@cmd: is the name of the environment
  *@HOME: one of the global variables
@@ -61,15 +43,25 @@ void _exeEnv(char *cmd, char *HOME, char *PWD, char *SHELL, char *PATH)
  *_getline - this will get the buffer of the stdin
  *Return: will return nothing (void)
  */
+
 void _getline(void)
 {
-        char *buffer;
-        size_t bufferSize = MAX_LEN_CMD;
+	char *buffer = NULL;
+	ssize_t valueVar = 0;
+	size_t size = 1024;
 
-        *buffer = getline(&buffer, &bufferSize, stdin);
-
-        if (buffer == NULL)
-        {
-                return;
-        }
+	if (isatty(STDIN_FILENO) == 1)
+	{
+		_printf("$ ");
+	}
+	_printf("t1");
+	valueVar = getline(&buffer, &size, stdin);
+	_printf("t2");
+	if (valueVar == EOF)
+	{
+		free(buffer);
+		perror("End of file");
+		exit(-1);
+	}
+	_printf("t3");
 }

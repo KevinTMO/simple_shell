@@ -41,19 +41,18 @@ char *_memset(char *s, char b, unsigned int n)
 
 char *_getenv(char *pathName)
 {
-	char *envCopy = pathName;
 	int index, sindex;
 
 	for (index = 0; environ[index] != NULL; index++)
 	{
 		for (sindex = 0; environ[index][sindex] != '\0'; sindex++)
 		{
-			while (environ[index][sindex] == *envCopy)
+			while (environ[index][sindex] == *pathName)
 			{
 				sindex++;
-				envCopy++;
+				pathName++;
 			}
-			if (*envCopy == '\0')
+			if (*pathName == '\0')
 			{
 				return (environ[index]);
 			}

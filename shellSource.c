@@ -7,43 +7,56 @@
 
 int main(void)
 {
-	int enter = 1;
-	char cmd[MAX_LEN_CMD], *args[MAX_ARGS],	SHELL[MAX_LEN_CMD];
-	char PATH[MAX_LEN_CMD], HOME[MAX_LEN_CMD], PWD[MAX_LEN_CMD];
+	int enter = 1, checkInput = 0;
+	char *cmd = NULL, *args[MAX_ARGS], PATH[MAX_LEN_CMD], PWD[MAX_LEN_CMD];
+	/*char SHELL[MAX_LEN_CMD];*/
+	/*char HOME[MAX_LEN_CMD];*/
+	size_t size = 0;
 
 	getcwd(PWD, MAX_LEN_CMD);
-	_strcpy(PATH, _getenv("PATH")), _strcpy(HOME, PWD), _strcpy(SHELL, PWD);
+	_strcpy(PATH, _getenv("PATH")); /*_strcpy(HOME, PWD), _strcpy(SHELL, PWD);*/
+	signal(SIGINT, SIG_IGN);
 
-	do { /*REPL*/
-		_printf(" %s$ ", PWD), __fpurge(stdin);
-		scanf("%[^\n]s", cmd);
+	while (enter)
+	{ /*REPL*/
+		__isatty(PWD);
 
-		if (cmd[0] == '\0' || _strcmp(cmd, "\n") == 0)
+		checkInput = getline(&cmd, &size, stdin);
+
+		if (checkInput == EOF)
 		{
-			_putchar('\n'), exit(EXIT_SUCCESS);
+			_printf("\n");
+			free(cmd);
+			return (0);
 		}
 		if (_strlen(cmd) > 0)
 		{
-			extracTokens(cmd, args);
+			extracTokens(cmd, args), cmd[checkInput - 1] = '\0';
+
 			if (_strcmp(cmd, "cd") == 0)
 				_execd(args, PWD);
-			else if (_strcmp(cmd, "clear") == 0)
-			{
-				_strcpy(cmd, "clear");
-				externCMD(cmd, args);
-			}
-			_exeEnv(cmd, HOME, PWD, SHELL, PATH);
-			if (_strcmp(cmd, "echo") == 0)
-				_exeEcho(args, PWD, HOME, SHELL, PATH);
-			else if
-				(_strcmp(cmd, "pwd") == 0)
-				_printf("%s\n", PWD);
-			else if
-				(_strcmp(cmd, "exit") == 0)
+			else if (_strcmp(cmd, "echo") == 0)
+				__echo(args, PATH);
+			else if (_strcmp(cmd, "exit") == 0)
 				enter = 0;
 			else
 				externCMD(cmd, args);
 		}
-	} while (enter);
+		free(cmd);
+		cmd = NULL;
+	}
 	return (0);
+}
+
+/**
+ *__isatty - will check the file descriptor is std input
+ *@PWD: this parameter will receive the working directory
+ */
+
+void __isatty(char *PWD)
+{
+	if (isatty(STDIN_FILENO) == 1)
+	{
+		_printf(" %s$ ", PWD);
+	}
 }

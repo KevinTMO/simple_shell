@@ -10,18 +10,16 @@
 void extracTokens(char *cmd, char *args[])
 {
 	int index;
-	/* @index: will iterate to eliminate the last argument */
 
-	for (index = 0; index < (MAX_ARGS - 1); index++)
-	{
-		args[index] = NULL;
-	}
+	/* @index: will iterate to eliminate the last argument */
+	/*for (index = 0; index < (MAX_ARGS - 1); index++)*/
+	/*args[index] = NULL;*/
 
 	strtok(cmd, " ");
 	index = 0;
 
 	args[index] = cmd;
-	while ((args[++index] = strtok(NULL, " ")) != NULL && index < (MAX_ARGS - 2))
+	while ((args[++index] = strtok(NULL, " ")) != NULL)
 	{
 		;
 	}
@@ -30,14 +28,11 @@ void extracTokens(char *cmd, char *args[])
 /**
  *__echo - will print words to the stdout
  *@args: is the arguments of strings
- *@PWD: is the working dir
- *@HOME: is the home working dir
- *@SHELL: is the working dir on the shell
  *@PATH: is holding the path
  *Return: will return nothing (void)
  */
 
-void __echo(char *args[], char *PWD, char *HOME, char *SHELL, char *PATH)
+void __echo(char *args[], char *PATH)
 {
 	unsigned int idxC, idxStr = 0;
 	int idxT;
@@ -62,14 +57,8 @@ void __echo(char *args[], char *PWD, char *HOME, char *SHELL, char *PATH)
 					tmp[idxT] = args[idxStr][idxC + idxT + 1];
 				}
 				tmp[idxT] = '\0';
-				if (_strcmp(tmp, "SHELL") == 0)
-					_printf("%s", SHELL), idxC += 5;
-				else if (_strcmp(tmp, "PATH") == 0)
+				if (_strcmp(tmp, "PATH") == 0)
 					_printf("%s", PATH), idxC += 4;
-				else if (_strcmp(tmp, "PWD") == 0)
-					_printf("%s", PWD), idxC += 3;
-				else if (_strcmp(tmp, "HOME") == 0)
-					_printf("%s", HOME), idxC += 4;
 				else
 					_printf("$");
 			}
@@ -90,9 +79,6 @@ void externCMD(char *cmd, char *args[])
 {
 	int pid = 0; /* @pid: is the variable of the process identification */
 	int status; /* is the variable that will receive the return val of execvp */
-
-	if (_strcmp(cmd, "cd") == 0 || _strcmp(cmd, "environ") == 0)
-		return;
 
 	pid = fork();
 

@@ -23,7 +23,7 @@ extern char **environ;
 
 /* KEVINTMO PROTOTYPES BELOW */
 
-void __echo(char *args[], char *PWD, char *HOME, char *SHELL, char *PATH);
+void __echo(char *args[], char *PATH);
 void externCMD(char *cmd, char *args[]);
 void extracTokens(char *cmd, char *args[]);
 void dirList(char *PWD, char *args[]);
@@ -50,8 +50,9 @@ char *_memset(char *s, char b, unsigned int n);
 /* EXECUTABLE FUNCTIONS */
 
 void _execd(char *args[], char *PWD);
-void _exeEcho(char *args[], char *PWD, char *HOME, char *SHELL, char *PATH);
+void _exeEcho(char *args[], char *PATH);
 void _exeEnv(char *cmd, char *HOME, char *PWD, char *SHELL, char *PATH);
 void _getline(void);
+void __isatty(char *PWD);
 
 #endif /* SHELL_H */
