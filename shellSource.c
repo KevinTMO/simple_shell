@@ -45,6 +45,7 @@ int main(void)
 		free(cmd);
 		cmd = NULL;
 	}
+	free(cmd);
 	return (0);
 }
 

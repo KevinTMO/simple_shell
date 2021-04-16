@@ -92,6 +92,7 @@ void externCMD(char *cmd, char *args[])
 		if (status)
 		{
 			_printf("Error: it couldn't recognize %s or couldn't execute\n", cmd);
+			free(cmd);
 			exit(1);
 		}
 	}
