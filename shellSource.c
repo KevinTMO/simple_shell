@@ -19,13 +19,14 @@ int main(void)
 
 	while (enter)
 	{ /*REPL*/
-		__isatty(PWD);
+		__isatty();
 
 		checkInput = getline(&cmd, &size, stdin);
 
 		if (checkInput == EOF)
 		{
-			_printf("\n");
+			if (isatty(STDIN_FILENO) == 1)
+				_printf("\n");
 			free(cmd);
 			return (0);
 		}
@@ -45,7 +46,6 @@ int main(void)
 		free(cmd);
 		cmd = NULL;
 	}
-	free(cmd);
 	return (0);
 }
 
@@ -54,10 +54,10 @@ int main(void)
  *@PWD: this parameter will receive the working directory
  */
 
-void __isatty(char *PWD)
+void __isatty(void)
 {
 	if (isatty(STDIN_FILENO) == 1)
 	{
-		_printf(" %s$ ", PWD);
+		_printf("$ ");
 	}
 }

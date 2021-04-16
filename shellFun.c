@@ -79,6 +79,7 @@ void externCMD(char *cmd, char *args[])
 {
 	int pid = 0; /* @pid: is the variable of the process identification */
 	int status; /* is the variable that will receive the return val of execvp */
+	int waitStatus;
 
 	pid = fork();
 
@@ -93,9 +94,9 @@ void externCMD(char *cmd, char *args[])
 		{
 			_printf("Error: it couldn't recognize %s or couldn't execute\n", cmd);
 			free(cmd);
-			exit(1);
+			exit(EXIT_SUCCESS);
 		}
 	}
 	else
-		wait(NULL);
+		wait(&waitStatus);
 }

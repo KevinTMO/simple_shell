@@ -50,6 +50,6 @@ void _execd(char *args[], char *PWD);
 void _exeEcho(char *args[], char *PATH);
 void _exeEnv(char *cmd, char *HOME, char *PWD, char *SHELL, char *PATH);
 void _getline(void);
-void __isatty(char *PWD);
+void __isatty(void);
 
 #endif /* SHELL_H */
