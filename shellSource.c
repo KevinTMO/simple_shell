@@ -51,7 +51,6 @@ int main(void)
 
 /**
  *__isatty - will check the file descriptor is std input
- *@PWD: this parameter will receive the working directory
  */
 
 void __isatty(void)

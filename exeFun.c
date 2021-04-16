@@ -9,7 +9,7 @@
 
 void _execd(char *args[], char *PWD)
 {
-	if (args[1])
+	if (args[1])/*always going to enter*/
 	{
 		if (chdir(args[1]) != 0)
 		{
@@ -17,6 +17,21 @@ void _execd(char *args[], char *PWD)
 		}
 		else
 			getcwd(PWD, MAX_LEN_CMD);
+	}
+}
+
+/**
+ *_exeEcho - will execute the echo command function
+ *@args: is the pointer to strings of arguments
+ *@PATH: one of the global variables
+ *Return: will return nothing (void)
+ */
+
+void _exeEcho(char *args[], char *PATH)
+{
+	if (args[1])
+	{
+		__echo(args, PATH);
 	}
 }
 
@@ -43,25 +58,15 @@ void _exeEnv(char *cmd, char *HOME, char *PWD, char *SHELL, char *PATH)
  *_getline - this will get the buffer of the stdin
  *Return: will return nothing (void)
  */
-
 void _getline(void)
 {
-	char *buffer = NULL;
-	ssize_t valueVar = 0;
-	size_t size = 1024;
+	char *buffer;
+	size_t bufferSize = MAX_LEN_CMD;
 
-	if (isatty(STDIN_FILENO) == 1)
+	*buffer = getline(&buffer, &bufferSize, stdin);
+
+	if (buffer == NULL)
 	{
-		_printf("$ ");
+		return;
 	}
-	_printf("t1");
-	valueVar = getline(&buffer, &size, stdin);
-	_printf("t2");
-	if (valueVar == EOF)
-	{
-		free(buffer);
-		perror("End of file");
-		exit(-1);
-	}
-	_printf("t3");
 }
